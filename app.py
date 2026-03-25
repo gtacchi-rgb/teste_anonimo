@@ -96,7 +96,7 @@ st.set_page_config(
 # ------------------------------------------------------------------------------
 LOG_LOCAL = pathlib.Path.cwd() / "click_log.csv"
 CREDENTIALS_FILE = "credentials.json"
-SPREADSHEET_ID = "1IsXVurwO4uXMPO0tVba4yICboGwd6EWTd6ps3J3R3ak"    # Substitua pelo ID da sua planilha Google Sheets
+SPREADSHEET_ID = "1Y6JbcvUcHAxKL8WTjQUF3aXPaNwqmoLbW1Ip8xOA5lk"
 
 # Planilha com dados cadastrais dos alunos (matrícula, disciplinas, etc.)
 # Usada APENAS para autenticação e listagem de disciplinas no login.
@@ -629,7 +629,10 @@ def tela_login():
     Dados gravados: NENHUM (apenas session_state temporária)
     """
     if os.path.exists("processo_industrial.png"):
-        st.image("processo_industrial.png", width='stretch')
+        try:
+            st.image("processo_industrial.png", use_container_width=True)
+        except Exception:
+            pass
     
     # Título principal centralizado
     st.markdown('<h1 class="titulo-principal">🧪 Portal de Avaliação Docente EQ</h1>', unsafe_allow_html=True)
@@ -741,7 +744,10 @@ def tela_atualizacao():
     if os.path.exists("gif1.gif"):
         col1, col2, col3 = st.columns([1, 2, 1])
         with col2:
-            st.image("gif1.gif", width=410)
+            try:
+                st.image("gif1.gif", width=410)
+            except Exception:
+                pass
     
     aluno = st.session_state.aluno_logado
     # Debug: ver o que está no dicionário aluno
@@ -1152,7 +1158,10 @@ def tela_sucesso():
     if os.path.exists("gif3.gif"):
         col1, col2, col3 = st.columns([1, 2, 1])
         with col2:
-            st.image("gif3.gif", width=420)
+            try:
+                st.image("gif3.gif", width=420)
+            except Exception:
+                pass
 
     st.balloons()
     
