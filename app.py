@@ -96,7 +96,7 @@ st.set_page_config(
 # ------------------------------------------------------------------------------
 LOG_LOCAL = pathlib.Path.cwd() / "click_log.csv"
 CREDENTIALS_FILE = "credentials.json"
-SPREADSHEET_ID = "SEU_ID_DA_PLANILHA_AQUI"    # Substitua pelo ID da sua planilha Google Sheets
+SPREADSHEET_ID = "1IsXVurwO4uXMPO0tVba4yICboGwd6EWTd6ps3J3R3ak"    # Substitua pelo ID da sua planilha Google Sheets
 
 # Planilha com dados cadastrais dos alunos (matrícula, disciplinas, etc.)
 # Usada APENAS para autenticação e listagem de disciplinas no login.
