@@ -1,368 +1,66 @@
 {
-  "versao": "4.1",
-  "data": "2026-03-01",
-  "total_perguntas": 44,
-  "descricao": "Questionário de Avaliação Docente - CEFET-MG Engenharia Química",
-  "instrucoes": {
-    "titulo": "Avaliação de Ensino - CEFET-MG",
-    "texto": "\n        Suas respostas são ANÔNIMAS e fundamentais para melhorar nosso curso.\n        \n        ⚠️ ATENÇÃO: Algumas perguntas têm escala INVERTIDA para garantir atenção.\n        \n        Tempo estimado: 10-12 minutos.\n        ",
-    "tempo_estimado_minutos": 12
-  },
-  "dimensoes": [
-    {
-      "id": "D1",
-      "nome": "Autoavaliação do Estudante",
-      "descricao": "Avalie sua participação (presença, estudo, preparo)",
-      "perguntas": [
-        {
-          "codigo": "Q001",
-          "texto": "Compareci e acompanhei a disciplina o suficiente para avaliar com justiça.",
-          "tipo": "likert",
-          "invertida": false
-        },
-        {
-          "codigo": "Q002",
-          "texto": "Minha base de conhecimentos prévios foi suficiente para a disciplina.",
-          "tipo": "likert",
-          "invertida": false
-        },
-        {
-          "codigo": "Q003",
-          "texto": "Entreguei atividades/trabalhos dentro dos prazos e com qualidade.",
-          "tipo": "likert",
-          "invertida": false
-        },
-        {
-          "codigo": "Q004",
-          "texto": "Quando tive dificuldades, busquei ajuda (professor, colegas, monitoria).",
-          "tipo": "likert",
-          "invertida": false
-        },
-        {
-          "codigo": "Q005",
-          "texto": "Participei ativamente das aulas (perguntas, discussões).",
-          "tipo": "likert",
-          "invertida": false
-        },
-        {
-          "codigo": "Q006",
-          "texto": "Meu desempenho reflete meu esforço pessoal real.",
-          "tipo": "likert",
-          "invertida": true
-        },
-        {
-          "codigo": "Q007",
-          "texto": "Me preparei previamente (leituras, listas) para as aulas.",
-          "tipo": "likert",
-          "invertida": false
-        }
-      ]
-    },
-    {
-      "id": "D2",
-      "nome": "Organização, Clareza e Profissionalismo",
-      "descricao": "Avalie organização e comunicação do professor",
-      "perguntas": [
-        {
-          "codigo": "Q008",
-          "texto": "As explicações foram claras e compreensíveis.",
-          "tipo": "likert",
-          "invertida": false
-        },
-        {
-          "codigo": "Q009",
-          "texto": "O conteúdo foi apresentado de forma organizada e lógica.",
-          "tipo": "likert",
-          "invertida": false
-        },
-        {
-          "codigo": "Q010",
-          "texto": "Os objetivos da disciplina foram comunicados claramente.",
-          "tipo": "likert",
-          "invertida": false
-        },
-        {
-          "codigo": "Q011",
-          "texto": "Materiais e plataformas (SIGAA, AVA) foram organizados.",
-          "tipo": "likert",
-          "invertida": false
-        },
-        {
-          "codigo": "Q012",
-          "texto": "Mudanças no cronograma foram comunicadas com antecedência.",
-          "tipo": "likert",
-          "invertida": true
-        }
-      ]
-    },
-    {
-      "id": "D3",
-      "nome": "Desempenho Didático-Pedagógico",
-      "descricao": "Avalie qualidade do ensino e domínio do conteúdo",
-      "perguntas": [
-        {
-          "codigo": "Q013",
-          "texto": "O(a) docente demonstrou domínio completo do conteúdo.",
-          "tipo": "likert",
-          "invertida": false
-        },
-        {
-          "codigo": "Q014",
-          "texto": "Explicou o 'porquê' técnico, não apenas fórmulas.",
-          "tipo": "likert",
-          "invertida": false
-        },
-        {
-          "codigo": "Q015",
-          "texto": "Conceitos difíceis foram explicados com exemplos práticos.",
-          "tipo": "likert",
-          "invertida": false
-        },
-        {
-          "codigo": "Q016",
-          "texto": "A disciplina foi exigente, mas o rigor foi justo.",
-          "tipo": "likert",
-          "invertida": false
-        }
-      ]
-    },
-    {
-      "id": "D4",
-      "nome": "Métodos e Recursos Didáticos",
-      "descricao": "Avalie materiais e métodos de ensino",
-      "perguntas": [
-        {
-          "codigo": "Q017",
-          "texto": "Materiais (slides, apostilas, vídeos) foram de qualidade.",
-          "tipo": "likert",
-          "invertida": false
-        },
-        {
-          "codigo": "Q018",
-          "texto": "Usou exemplos práticos, casos reais ou aplicações industriais.",
-          "tipo": "likert",
-          "invertida": true
-        },
-        {
-          "codigo": "Q019",
-          "texto": "Utilizou práticas inovadoras que estimularam aprendizado.",
-          "tipo": "likert",
-          "invertida": false
-        },
-        {
-          "codigo": "Q020",
-          "texto": "Quando me senti perdido(a), havia recursos de apoio.",
-          "tipo": "likert",
-          "invertida": false
-        }
-      ]
-    },
-    {
-      "id": "D5",
-      "nome": "Critérios de Avaliação e Retorno",
-      "descricao": "Avalie provas, trabalhos e feedback",
-      "perguntas": [
-        {
-          "codigo": "Q021",
-          "texto": "As avaliações foram coerentes com o que foi ensinado.",
-          "tipo": "likert",
-          "invertida": false
-        },
-        {
-          "codigo": "Q022",
-          "texto": "Os critérios de avaliação foram justos e transparentes.",
-          "tipo": "likert",
-          "invertida": false
-        },
-        {
-          "codigo": "Q023",
-          "texto": "Critérios foram comunicados ANTES das provas/trabalhos.",
-          "tipo": "likert",
-          "invertida": false
-        },
-        {
-          "codigo": "Q024",
-          "texto": "Recebi feedback útil que me ajudou a melhorar.",
-          "tipo": "likert",
-          "invertida": true
-        }
-      ]
-    },
-    {
-      "id": "D6",
-      "nome": "Relacionamento e Suporte",
-      "descricao": "Avalie acessibilidade e relacionamento",
-      "perguntas": [
-        {
-          "codigo": "Q025",
-          "texto": "O(a) docente se mostrou acessível e disposto(a) a ajudar.",
-          "tipo": "likert",
-          "invertida": false
-        },
-        {
-          "codigo": "Q026",
-          "texto": "Minhas dúvidas foram recebidas com atenção e respeito.",
-          "tipo": "likert",
-          "invertida": false
-        },
-        {
-          "codigo": "Q027",
-          "texto": "Promoveu ambiente de respeito onde todos podiam participar.",
-          "tipo": "likert",
-          "invertida": false
-        },
-        {
-          "codigo": "Q028",
-          "texto": "Cumpriu horários de início/término das aulas.",
-          "tipo": "likert",
-          "invertida": false
-        },
-        {
-          "codigo": "Q029",
-          "texto": "Respondeu e-mails/mensagens em tempo razoável.",
-          "tipo": "likert",
-          "invertida": false
-        }
-      ]
-    },
-    {
-      "id": "D7",
-      "nome": "Entusiasmo e Atualização",
-      "descricao": "Avalie energia e conhecimento atualizado",
-      "perguntas": [
-        {
-          "codigo": "Q030",
-          "texto": "Demonstrou entusiasmo ao lecionar, tornando aulas interessantes.",
-          "tipo": "likert",
-          "invertida": true
-        },
-        {
-          "codigo": "Q031",
-          "texto": "As aulas mantiveram meu interesse na maior parte do tempo.",
-          "tipo": "likert",
-          "invertida": false
-        },
-        {
-          "codigo": "Q032",
-          "texto": "Demonstrou estar atualizado(a), trazendo abordagens modernas.",
-          "tipo": "likert",
-          "invertida": false
-        }
-      ]
-    },
-    {
-      "id": "D8",
-      "nome": "Perspectiva Engenharia Química",
-      "descricao": "Avalie conexão com o curso",
-      "perguntas": [
-        {
-          "codigo": "Q033",
-          "texto": "Mostrou conexões com outras disciplinas do curso.",
-          "tipo": "likert",
-          "invertida": false
-        },
-        {
-          "codigo": "Q034",
-          "texto": "O que aprendi será valioso para minha formação como eng. químico.",
-          "tipo": "likert",
-          "invertida": false
-        },
-        {
-          "codigo": "Q035",
-          "texto": "A disciplina ampliou minha visão da Engenharia Química.",
-          "tipo": "likert",
-          "invertida": false
-        }
-      ]
-    },
-    {
-      "id": "D9",
-      "nome": "Avaliação Global",
-      "descricao": "Avaliação geral e comparativa",
-      "perguntas": [
-        {
-          "codigo": "Q036",
-          "texto": "Recomendaria este(a) professor(a) a um colega? (0=NÃO, 10=SIM)",
-          "tipo": "escala",
-          "min": 0,
-          "max": 10
-        },
-        {
-          "codigo": "Q037",
-          "texto": "Nota geral para este(a) professor(a). (0=Péssimo, 10=Excelente)",
-          "tipo": "escala",
-          "min": 0,
-          "max": 10
-        },
-        {
-          "codigo": "Q038",
-          "texto": "Nível de dificuldade desta disciplina para você. (0=Fácil, 10=Difícil)",
-          "tipo": "escala",
-          "min": 0,
-          "max": 10
-        },
-        {
-          "codigo": "Q039",
-          "texto": "Comparado a outros do CURSO, como avalia este docente? (0=Pior, 10=Melhor)",
-          "tipo": "escala",
-          "min": 0,
-          "max": 10
-        },
-        {
-          "codigo": "Q040",
-          "texto": "Comparado a outros do PERÍODO, como avalia? (0=Pior, 10=Melhor)",
-          "tipo": "escala",
-          "min": 0,
-          "max": 10
-        },
-        {
-          "codigo": "Q041",
-          "texto": "Meu interesse pelo assunto aumentou.",
-          "tipo": "likert",
-          "invertida": true
-        }
-      ]
-    },
-    {
-      "id": "ABERTAS",
-      "nome": "Perguntas Abertas",
-      "descricao": "Suas opiniões detalhadas são muito valiosas!",
-      "perguntas": [
-        {
-          "codigo": "Q042",
-          "texto": "Principais PONTOS POSITIVOS desta disciplina (seja específico):",
-          "tipo": "texto"
-        },
-        {
-          "codigo": "Q043",
-          "texto": "SUGESTÕES DE MELHORIA (seja construtivo):",
-          "tipo": "texto"
-        },
-        {
-          "codigo": "Q044",
-          "texto": "Comentários adicionais (opcional):",
-          "tipo": "texto"
-        }
-      ]
-    }
+  "D1 — Autoavaliação do Estudante": [
+    "Q001 — Compareci e acompanhei a disciplina o suficiente para avaliar com justiça. [1-5]",
+    "Q002 — Minha base de conhecimentos prévios foi suficiente para a disciplina. [1-5]",
+    "Q003 — Entreguei atividades/trabalhos dentro dos prazos e com qualidade. [1-5]",
+    "Q004 — Quando tive dificuldades, busquei ajuda (professor, colegas, monitoria). [1-5]",
+    "Q005 — Participei ativamente das aulas (perguntas, discussões). [1-5]",
+    "Q006 — Meu desempenho reflete meu esforço pessoal real. [1-5]",
+    "Q007 — Me preparei previamente (leituras, listas) para as aulas. [1-5]"
   ],
-  "inversoes_aplicadas": {
-    "total": 6,
-    "perguntas": [
-      "Q006",
-      "Q012",
-      "Q018",
-      "Q024",
-      "Q030",
-      "Q041"
-    ],
-    "justificativa": "Evitar marcação automática - garantir atenção"
-  },
-  "escala_likert": {
-    "1": "Discordo Totalmente",
-    "2": "Discordo",
-    "3": "Neutro / Não se aplica",
-    "4": "Concordo",
-    "5": "Concordo Totalmente"
-  }
+  "D2 — Organização, Clareza e Profissionalismo": [
+    "Q008 — As explicações foram claras e compreensíveis. [1-5]",
+    "Q009 — O conteúdo foi apresentado de forma organizada e lógica. [1-5]",
+    "Q010 — Os objetivos da disciplina foram comunicados claramente. [1-5]",
+    "Q011 — Materiais e plataformas (SIGAA, AVA) foram organizados. [1-5]",
+    "Q012 — Mudanças no cronograma foram comunicadas com antecedência. [1-5]"
+  ],
+  "D3 — Desempenho Didático-Pedagógico": [
+    "Q013 — O(a) docente demonstrou domínio completo do conteúdo. [1-5]",
+    "Q014 — Explicou o 'porquê' técnico, não apenas fórmulas. [1-5]",
+    "Q015 — Conceitos difíceis foram explicados com exemplos práticos. [1-5]",
+    "Q016 — A disciplina foi exigente, mas o rigor foi justo. [1-5]"
+  ],
+  "D4 — Métodos e Recursos Didáticos": [
+    "Q017 — Materiais (slides, apostilas, vídeos) foram de qualidade. [1-5]",
+    "Q018 — Usou exemplos práticos, casos reais ou aplicações industriais. [1-5]",
+    "Q019 — Utilizou práticas inovadoras que estimularam aprendizado. [1-5]",
+    "Q020 — Quando me senti perdido(a), havia recursos de apoio. [1-5]"
+  ],
+  "D5 — Critérios de Avaliação e Retorno": [
+    "Q021 — As avaliações foram coerentes com o que foi ensinado. [1-5]",
+    "Q022 — Os critérios de avaliação foram justos e transparentes. [1-5]",
+    "Q023 — Critérios foram comunicados ANTES das provas/trabalhos. [1-5]",
+    "Q024 — Recebi feedback útil que me ajudou a melhorar. [1-5]"
+  ],
+  "D6 — Relacionamento e Suporte": [
+    "Q025 — O(a) docente se mostrou acessível e disposto(a) a ajudar. [1-5]",
+    "Q026 — Minhas dúvidas foram recebidas com atenção e respeito. [1-5]",
+    "Q027 — Promoveu ambiente de respeito onde todos podiam participar. [1-5]",
+    "Q028 — Cumpriu horários de início/término das aulas. [1-5]",
+    "Q029 — Respondeu e-mails/mensagens em tempo razoável. [1-5]"
+  ],
+  "D7 — Entusiasmo e Atualização": [
+    "Q030 — Demonstrou entusiasmo ao lecionar, tornando aulas interessantes. [1-5]",
+    "Q031 — As aulas mantiveram meu interesse na maior parte do tempo. [1-5]",
+    "Q032 — Demonstrou estar atualizado(a), trazendo abordagens modernas. [1-5]"
+  ],
+  "D8 — Perspectiva Engenharia Química": [
+    "Q033 — Mostrou conexões com outras disciplinas do curso. [1-5]",
+    "Q034 — O que aprendi será valioso para minha formação como eng. químico. [1-5]",
+    "Q035 — A disciplina ampliou minha visão da Engenharia Química. [1-5]"
+  ],
+  "D9 — Avaliação Global": [
+    "Q036 — Recomendaria este(a) professor(a) a um colega? (0=NÃO, 10=SIM) [1-10]",
+    "Q037 — Nota geral para este(a) professor(a). (0=Péssimo, 10=Excelente) [1-10]",
+    "Q038 — Nível de dificuldade desta disciplina para você. (0=Fácil, 10=Difícil) [1-10]",
+    "Q039 — Comparado a outros do CURSO, como avalia este docente? (0=Pior, 10=Melhor) [1-10]",
+    "Q040 — Comparado a outros do PERÍODO, como avalia? (0=Pior, 10=Melhor) [1-10]",
+    "Q041 — Meu interesse pelo assunto aumentou. [1-5]"
+  ],
+  "Perguntas Abertas": [
+    "Q042 — Principais PONTOS POSITIVOS desta disciplina (seja específico): [ABERTA]",
+    "Q043 — SUGESTÕES DE MELHORIA (seja construtivo): [ABERTA]",
+    "Q044 — Comentários adicionais (opcional): [ABERTA]"
+  ]
 }
