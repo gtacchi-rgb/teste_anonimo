@@ -1,0 +1,14 @@
+# Framework web
+streamlit>=1.31.0
+
+# Manipulação de dados
+pandas>=2.0.0
+
+# Google Sheets API (versões atualizadas - não usar oauth2client!)
+gspread>=5.12.0
+google-auth>=2.26.0
+google-auth-oauthlib>=1.2.0
+google-auth-httplib2>=0.2.0
+
+# Utilitários
+python-dateutil>=2.8.2
