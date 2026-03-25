@@ -96,7 +96,7 @@ st.set_page_config(
 # ------------------------------------------------------------------------------
 LOG_LOCAL = pathlib.Path.cwd() / "click_log.csv"
 CREDENTIALS_FILE = "credentials.json"
-SPREADSHEET_ID = "1Y6JbcvUcHAxKL8WTjQUF3aXPaNwqmoLbW1Ip8xOA5lk"
+SPREADSHEET_ID = "1IsXVurwO4uXMPO0tVba4yICboGwd6EWTd6ps3J3R3ak"
 
 # Planilha com dados cadastrais dos alunos (matrícula, disciplinas, etc.)
 # Usada APENAS para autenticação e listagem de disciplinas no login.
