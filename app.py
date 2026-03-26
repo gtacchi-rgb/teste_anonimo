@@ -18,11 +18,13 @@
 #      → Esta planilha é usada para análise de resultados.
 #
 #   2. "Controle_Anonimato" (CONTROL_SHEET)
-#      → Armazena APENAS: data/hora e chave de controle.
-#      → A chave de controle identifica QUAL avaliação foi feita (disciplina +
-#        professor + aluno), para evitar duplicação.
-#      → Esta planilha NÃO contém respostas nem notas.
-#      → Não existe cruzamento possível entre as duas planilhas.
+#      → Armazena APENAS: chave de controle (SEM timestamp).
+#      → A chave contém código da disciplina + SIAPE parcial + hash da matrícula.
+#        A matrícula é transformada por operação matemática irreversível (hash
+#        SHA-256 com sal), de modo que não é possível recuperar o número original.
+#      → Esta planilha NÃO contém: respostas, notas, data/hora, ou matrícula legível.
+#      → SEM timestamp = impossível cruzar com a planilha Respostas por horário.
+#      → SEM matrícula legível = impossível saber qual aluno corresponde a qual chave.
 #
 # FLUXO DE DADOS
 # ==============
@@ -107,8 +109,8 @@ MAIN_SHEET_BASE = "BASE_DISCENTES"
 MAIN_SHEET_RESP = "Respostas"
 
 # Planilha de CONTROLE DE DUPLICAÇÃO — registra apenas QUAIS avaliações foram feitas.
-# Colunas: data_hora | chave_controle
-# NÃO contém respostas, notas ou textos abertos.
+# Colunas: chave_controle (com matrícula ofuscada por hash, sem timestamp)
+# NÃO contém respostas, notas, data/hora ou matrícula legível.
 CONTROL_SHEET = "Controle_Anonimato"
 
 BACKUP_SHEET = "Respostas_backup"
@@ -556,21 +558,21 @@ def gerar_chave_unica(row):
     """
     Gera chave de controle para verificar se o aluno já avaliou determinada disciplina.
     
-    Formato: {codigo_disciplina}_{ultimos_4_digitos_siape}_{matricula}
-    Exemplo: G11QORG1.01_8807_2027MEC9997
+    A matrícula é transformada por operação matemática irreversível antes de ser
+    incluída na chave, de modo que não é possível recuperar o número original.
     
-    IMPORTANTE: esta chave é gravada APENAS na planilha Controle_Anonimato,
-    que NÃO contém respostas. Serve exclusivamente para evitar avaliações
-    duplicadas (o mesmo aluno avaliando a mesma disciplina duas vezes).
+    Processo: matrícula → hash SHA-256 com sal fixo → 8 primeiros caracteres hex
+    Resultado: "G11QORG1.01_8807_A3F7B2E9" (sem matrícula visível)
     
-    A planilha de Respostas NÃO recebe esta chave.
-    
-    Destino: planilha "Controle_Anonimato", coluna 2
+    Destino: planilha "Controle_Anonimato", coluna 1 (sem timestamp)
     """
+    import hashlib
     siape = str(row.get('siapeprof', '0000')).strip()[-4:]
     mat = str(row.get('matricula', '00000000000')).strip()
     cod = str(row.get('codigo', 'DISC')).strip()
-    return f"{cod}_{siape}_{mat}"
+    # Ofuscar matrícula: hash com sal fixo (irreversível)
+    mat_hash = hashlib.sha256(f"sal_avaliacao_eq_{mat}".encode()).hexdigest()[:8].upper()
+    return f"{cod}_{siape}_{mat_hash}"
 
 
 def gerar_id_anonimo():
@@ -630,7 +632,7 @@ def tela_login():
     """
     if os.path.exists("processo_industrial.png"):
         try:
-            st.image("processo_industrial.png", use_container_width=True)
+            st.image("processo_industrial.png", width='stretch')
         except Exception:
             pass
     
@@ -890,7 +892,7 @@ def tela_selecao():
                 # Verificar avaliações já realizadas
                 try:
                     sh_controle = gc.worksheet(CONTROL_SHEET)
-                    chaves_feitas = [str(c).strip() for c in sh_controle.col_values(2)[1:]]
+                    chaves_feitas = [str(c).strip() for c in sh_controle.col_values(1)[1:]]
                 except gspread.exceptions.WorksheetNotFound:
                     # Primeira execução: aba ainda não existe
                     chaves_feitas = []
@@ -1094,12 +1096,12 @@ def tela_questionario():
                     
                     # ┌─────────────────────────────────────────────────────────┐
                     # │ LINHA GRAVADA NA PLANILHA "Controle_Anonimato"         │
-                    # │ Campos: data | chave_controle                          │
-                    # │ NÃO inclui: respostas, notas, textos abertos           │
+                    # │ Campos: APENAS chave_controle (sem timestamp!)         │
+                    # │ NÃO inclui: respostas, notas, textos, data/hora        │
+                    # │ Sem timestamp = impossível cruzar com planilha Respostas│
                     # └─────────────────────────────────────────────────────────┘
                     linha_controle = [
-                        datetime.now().strftime("%d/%m/%Y %H:%M"),  # Col A: data/hora
-                        chave_controle                               # Col B: chave (disciplina+prof+aluno)
+                        chave_controle   # Col A: chave ofuscada (matrícula em hash)
                     ]
 
                     # Salvar online ou localmente
@@ -1115,9 +1117,9 @@ def tela_questionario():
                         except gspread.exceptions.WorksheetNotFound:
                             planilha = gc
                             ws = planilha.add_worksheet(
-                                title=CONTROL_SHEET, rows=2000, cols=2
+                                title=CONTROL_SHEET, rows=2000, cols=1
                             )
-                            ws.append_row(["data_hora", "chave_controle"])
+                            ws.append_row(["chave_controle"])
                             ws.append_row(linha_controle, value_input_option='USER_ENTERED')
                             logger.info("Aba de controle criada")
                         
