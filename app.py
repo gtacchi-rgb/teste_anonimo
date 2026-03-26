@@ -731,15 +731,17 @@ def tela_atualizacao():
     TELA 2: Confirmação e atualização de dados de contato (e-mail e celular).
     
     Fluxo:
-    1. Exibe dados cadastrais do aluno (vindos da session_state, não de disco)
+    1. Exibe dados cadastrais do aluno (vindos da session_state)
     2. Aluno confirma ou atualiza e-mail e celular
-    3. Dados atualizados ficam na session_state
+    3. Ao clicar "Tudo Pronto", os dados atualizados são salvos
+       diretamente na planilha BASE_DISCENTES
     
-    ANONIMATO: esta tela NÃO grava nada em disco ou planilha.
-    Os dados de contato ficam apenas na memória temporária.
+    ANONIMATO: esta atualização é cadastral (e-mail/celular) e não tem
+    nenhuma relação com as respostas da avaliação. A planilha de Respostas
+    não é afetada.
     
     Dados lidos: session_state (memória)
-    Dados gravados: NENHUM
+    Dados gravados: planilha "BASE_DISCENTES" (colunas E-mail e Telefone Celular)
     """
     st.title("📱 Confirmação de Contatos")
     
@@ -850,12 +852,45 @@ def tela_atualizacao():
         width='stretch',
         disabled=not pode_prosseguir
     ):
-        # Atualizar com as colunas corretas da planilha
+        # Atualizar session_state
         st.session_state.aluno_logado.update({
             'email': email_final,
             'telefonecelular': celular_final
         })
-        logger.info(f"Dados atualizados: {aluno.get('matricula', 'unknown')}")
+        
+        # Salvar dados atualizados na planilha BASE_DISCENTES
+        # (atualização cadastral, sem relação com respostas da avaliação)
+        try:
+            gc = conectar_google_sheets()
+            if gc:
+                ws_base = gc.worksheet(MAIN_SHEET_BASE)
+                mat_aluno = str(aluno.get('matricula', '')).strip()
+                
+                # Buscar cabeçalhos originais para localizar colunas de e-mail e celular
+                cabecalhos = ws_base.row_values(1)
+                cab_norm = [normalizar_texto(c) for c in cabecalhos]
+                
+                # Localizar índices das colunas (1-based para gspread)
+                col_email = cab_norm.index('email') + 1 if 'email' in cab_norm else None
+                col_cel = cab_norm.index('telefonecelular') + 1 if 'telefonecelular' in cab_norm else None
+                
+                # Localizar todas as linhas deste aluno (pode ter várias disciplinas)
+                col_mat = cab_norm.index('matricula') + 1 if 'matricula' in cab_norm else 1
+                matriculas = ws_base.col_values(col_mat)
+                
+                for i, m in enumerate(matriculas):
+                    if str(m).strip().upper() == mat_aluno.upper() and i > 0:  # pular cabeçalho
+                        linha = i + 1  # gspread é 1-based
+                        if col_email and email_final:
+                            ws_base.update_cell(linha, col_email, email_final)
+                        if col_cel and celular_final:
+                            ws_base.update_cell(linha, col_cel, celular_final)
+                
+                logger.info(f"Contatos salvos na BASE_DISCENTES: {mat_aluno}")
+        except Exception as e:
+            logger.warning(f"Nao foi possivel salvar contatos: {e}")
+            # Não bloqueia o fluxo — dados ficam na session_state mesmo se falhar
+        
         st.session_state.etapa = 'selecao'
         maybe_rerun()
         return
