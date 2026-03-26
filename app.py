@@ -632,9 +632,10 @@ def tela_login():
     """
     if os.path.exists("processo_industrial.png"):
         try:
-            st.image("processo_industrial.png", width='stretch')
-        except Exception:
-            pass
+            with open("processo_industrial.png", "rb") as img_file:
+                st.image(img_file.read(), width='stretch')
+        except Exception as e:
+            logger.warning(f"Imagem processo_industrial.png nao carregada: {e}")
     
     # Título principal centralizado
     st.markdown('<h1 class="titulo-principal">🧪 Portal de Avaliação Docente EQ</h1>', unsafe_allow_html=True)
@@ -749,9 +750,10 @@ def tela_atualizacao():
         col1, col2, col3 = st.columns([1, 2, 1])
         with col2:
             try:
-                st.image("gif1.gif", width=410)
-            except Exception:
-                pass
+                with open("gif1.gif", "rb") as img_file:
+                    st.image(img_file.read(), width=410)
+            except Exception as e:
+                logger.warning(f"Imagem gif1.gif nao carregada: {e}")
     
     aluno = st.session_state.aluno_logado
     # Debug: ver o que está no dicionário aluno
@@ -1196,9 +1198,10 @@ def tela_sucesso():
         col1, col2, col3 = st.columns([1, 2, 1])
         with col2:
             try:
-                st.image("gif3.gif", width=420)
-            except Exception:
-                pass
+                with open("gif3.gif", "rb") as img_file:
+                    st.image(img_file.read(), width=420)
+            except Exception as e:
+                logger.warning(f"Imagem gif3.gif nao carregada: {e}")
 
     st.balloons()
     
